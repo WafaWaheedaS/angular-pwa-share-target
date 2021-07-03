@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, HostListener } from '@angular/core';
 
 @Component({
   selector: 'app-root',
@@ -7,4 +7,22 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'angular-pwa-share-target';
+  deferredPrompt: any;
+  showButton = false;
+
+  @HostListener('window:beforeinstallprompt', ['$event'])
+  onbeforeinstallprompt(e: { preventDefault: () => void }): void {
+    console.log('Logging event captured:', e);
+    e.preventDefault();
+    this.deferredPrompt = e;
+    this.showButton = true;
+  }
+
+  addToHomeScreen(): void {
+    this.showButton = false;
+    this.deferredPrompt.prompt();
+    this.deferredPrompt.userChoice.then((choiceResult: { outcome: string }) => {
+      this.deferredPrompt = null;
+    });
+  }
 }
