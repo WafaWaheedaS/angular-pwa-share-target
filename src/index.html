@@ -11,6 +11,22 @@
 </head>
 <body>
   <app-root></app-root>
+  <script>
+        window.addEventListener('DOMContentLoaded', () => {
+      const parsedUrl = new URL(window.location);
+      const para = document.createElement("p");
+      const textTitle = parsedUrl.searchParams.get('title');
+const node = document.createTextNode(textTitle);
+para.appendChild(node);
+const element = document.getElementById("div1");
+element.appendChild(para);
+      // searchParams.get() will properly handle decoding the values.
+      console.log('Title shared: ' + parsedUrl.searchParams.get('title'));
+      console.log('Text shared: ' + parsedUrl.searchParams.get('text'));
+      console.log('URL shared: ' + parsedUrl.searchParams.get('url'));
+    });
+  
+  </script>
   <noscript>Please enable JavaScript to continue using this application.</noscript>
 </body>
 </html>
