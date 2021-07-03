@@ -12,7 +12,7 @@ export class AppComponent implements OnInit{
   showButton = false;
   location = typeof window.location;
   showST: any; 
-  
+
   @HostListener('window:beforeinstallprompt', ['$event'])
   onbeforeinstallprompt(e: { preventDefault: () => void }): void {
     console.log('Logging event captured:', e);
@@ -24,7 +24,7 @@ export class AppComponent implements OnInit{
   public ngOnInit(): void {
     window.addEventListener('DOMContentLoaded', () => {
       const parsedUrl = new URL(this.location);
-      this.showST = parsedUrl;
+      this.showST = parsedUrl.searchParams.get('title');
       // searchParams.get() will properly handle decoding the values.
       console.log('Title shared: ' + parsedUrl.searchParams.get('title'));
       console.log('Text shared: ' + parsedUrl.searchParams.get('text'));
