@@ -22,14 +22,14 @@ export class AppComponent implements OnInit{
   }
 
   public ngOnInit(): void {
-    window.addEventListener('DOMContentLoaded', () => {
-      const parsedUrl = new URL(this.location);
-      this.showST = parsedUrl.searchParams.get('title');
-      // searchParams.get() will properly handle decoding the values.
-      console.log('Title shared: ' + parsedUrl.searchParams.get('title'));
-      console.log('Text shared: ' + parsedUrl.searchParams.get('text'));
-      console.log('URL shared: ' + parsedUrl.searchParams.get('url'));
-    });
+    // window.addEventListener('DOMContentLoaded', () => {
+    //   const parsedUrl = new URL(this.location);
+    //   this.showST = parsedUrl.searchParams.get('title');
+    //   // searchParams.get() will properly handle decoding the values.
+    //   console.log('Title shared: ' + parsedUrl.searchParams.get('title'));
+    //   console.log('Text shared: ' + parsedUrl.searchParams.get('text'));
+    //   console.log('URL shared: ' + parsedUrl.searchParams.get('url'));
+    // });
   }
 
   addToHomeScreen(): void {
