@@ -12,7 +12,6 @@ export class AppComponent implements OnInit{
   title = 'angular-pwa-share-target';
   deferredPrompt: any;
   showButton = false;
-  location = typeof window.location;
   showST: any; 
 
   constructor(private activatedRoute: ActivatedRoute, private router: Router) {}
@@ -31,6 +30,7 @@ export class AppComponent implements OnInit{
       const parsedUrl = this.activatedRoute;
       console.log(parsedUrl)
       console.log(this.router.url)
+      this.showST = this.router.url
     });
       
 
